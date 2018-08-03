@@ -1,8 +1,3 @@
 # DARLING BAKERY #
 
 
-
-
-
-
-
