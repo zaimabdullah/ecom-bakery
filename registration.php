@@ -157,9 +157,10 @@ if (isset($_POST["register-btn"])) {
 	$city = $_POST["city"];
 	$address = $_POST["address"];
 	$password = $_POST["password"];
+	$password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 	$query = "INSERT INTO users(userID, userEmail, userPassword, userFirstName, userLastName, userGender, userPhone, userCity, userAddress, userStatus)
-				VALUES('', '$email', '$password', '$firstname', '$lastname', '$gender', '$phone', '$city', '$address', default)";
+				VALUES('', '$email', '$password_hash', '$firstname', '$lastname', '$gender', '$phone', '$city', '$address', default)";
 	$sendquery = $conn->query($query);
 	if($sendquery) {
 		echo "<script type='text/javascript'>alert('Register Success');window.location='index.php';</script>"; /*javascript syntax for auto redirect page*/

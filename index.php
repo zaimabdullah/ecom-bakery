@@ -14,11 +14,12 @@ if (isset($_POST["login-btn"])) {
 	$username = $_POST["username"];
 	$password = $_POST["password"];
 	
-	$query = "SELECT * FROM users WHERE userEmail='".$username."' AND userPassword='".$password."'";
+	$query = "SELECT * FROM users WHERE userEmail='".$username."'";
 	$sendquery = $conn->query($query);
-	$numrow = $sendquery->num_rows;
-	if ($numrow > 0) {
-		$data = $sendquery->fetch_assoc();
+	$data = $sendquery->fetch_assoc();
+	$db_pass = $data["userPassword"];
+
+	if (password_verify($password, $db_pass)) {
 		$_SESSION["status"] = $data["userStatus"];
 		$_SESSION["userID"] = $data["userID"];
 		$_SESSION["userName"] = $data["userFirstName"];
@@ -27,15 +28,15 @@ if (isset($_POST["login-btn"])) {
 		$sendqueryorders = $conn->query($queryorder);
 		$dataorders = $sendqueryorders->fetch_assoc();
 		$_SESSION["orderNumber"] = $dataorders["orderID"]; /*pegang order ID yang status < 2 untuk customer yang sedang login kalau ada order*/
- 		if ($_SESSION["status"] == 2) {
+	 	if ($_SESSION["status"] == 2) {
 			echo "<script type='text/javascript'>alert('Login Success');window.location='productentry.php';</script>";
-			/*header("Location:#");*/
+				/*header("Location:#");*/
 		} else {
 			echo "<script type='text/javascript'>alert('Login Success');window.location='home.php';</script>";
-			/*header("Location:home.php"); PHP syntax for auto redirect page*/
+				/*header("Location:home.php"); PHP syntax for auto redirect page*/			
 		}	
 	} else {
-		echo "<script type='text/javascript'>alert('Invalid email or password, please enter again');window.location='index.php';</script>";
+		echo "<script type='text/javascript'>alert('Invalid email or password, please enter again');window.location='index.php';</script>";		
 	}
 }
 ?>
