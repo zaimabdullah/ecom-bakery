@@ -101,7 +101,7 @@ if (isset($_POST["login-btn"])) {
 		</div>
 		<div class="footer">
 		 	<div class="info">
-		 		<h4><b><i>Darling Bakery</i></b></h4>
+		 		<h4><b><i>Darling Bakery(This is a personal project only)</i></b></h4>
 		 	</div>
 		</div>
 	</div>
