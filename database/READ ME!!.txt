@@ -1,8 +1,4 @@
-1. Buka xampp
-2. Tekan admin(MySQL)
-3. Tunggu keluar di web browser
-4. Tekan import
-5. Tekan Choose File dan tekan Go
+1. db name: ecommerce
 
 Email: zcreative14@gmail.com
 Password:admin
